@@ -21,20 +21,7 @@ struct SearchTextFieldView: View {
             .cornerRadius(10)
             .padding(.leading, 30)
             .onSubmit {
-                Task {
-                    do {
-                        weatherModel = try await WeatherManager().getWeather(with: viewModel.prepareCityName(for: searchText))
-                        searchText = ""
-                    } catch GHError.invalidURL{
-                        print("invalid url")
-                    } catch GHError.invalidResponse{
-                        print("invalid response")
-                    } catch GHError.invalidData{
-                        print("invalid data")
-                    } catch {
-                        print("unexpected error")
-                    }
-                }
+                viewModel.weatherTask(for: searchText, $weatherModel)
             }
             .padding(.top)
     }

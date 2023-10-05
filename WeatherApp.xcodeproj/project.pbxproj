@@ -23,7 +23,6 @@
 		41CB89FA2AB723C800188083 /* WeatherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB89F92AB723C800188083 /* WeatherButton.swift */; };
 		41CE70072ABD9C0D001A224B /* CurrentLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE70062ABD9C0D001A224B /* CurrentLocationButton.swift */; };
 		41CE700B2ABDA491001A224B /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE700A2ABDA491001A224B /* LocationData.swift */; };
-		41D26FC42AB7ACC30028FE19 /* TestUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D26FC32AB7ACC30028FE19 /* TestUI.swift */; };
 		41EAF9C72ABDF6F60069F1C5 /* SearchTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAF9C62ABDF6F60069F1C5 /* SearchTextFieldView.swift */; };
 		41EAF9C92ABDF7CB0069F1C5 /* CityTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAF9C82ABDF7CB0069F1C5 /* CityTextView.swift */; };
 		41EAF9CB2ABDF8470069F1C5 /* MainWeatherStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAF9CA2ABDF8470069F1C5 /* MainWeatherStatusView.swift */; };
@@ -47,7 +46,6 @@
 		41CB89F92AB723C800188083 /* WeatherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherButton.swift; sourceTree = "<group>"; };
 		41CE70062ABD9C0D001A224B /* CurrentLocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationButton.swift; sourceTree = "<group>"; };
 		41CE700A2ABDA491001A224B /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
-		41D26FC32AB7ACC30028FE19 /* TestUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUI.swift; sourceTree = "<group>"; };
 		41EAF9C62ABDF6F60069F1C5 /* SearchTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextFieldView.swift; sourceTree = "<group>"; };
 		41EAF9C82ABDF7CB0069F1C5 /* CityTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTextView.swift; sourceTree = "<group>"; };
 		41EAF9CA2ABDF8470069F1C5 /* MainWeatherStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherStatusView.swift; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				4105BE992AC1EDA800F7DBF3 /* ViewModel */,
 				41CB89F12AB7192D00188083 /* Preview Content */,
 				4135E14F2AC4FCDD00E2A2A1 /* K.swift */,
-				41D26FC32AB7ACC30028FE19 /* TestUI.swift */,
 				41CB89EB2AB7192B00188083 /* WeatherAppApp.swift */,
 				41CB89EF2AB7192D00188083 /* Assets.xcassets */,
 			);
@@ -234,7 +231,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				41CB89EE2AB7192B00188083 /* ContentView.swift in Sources */,
-				41D26FC42AB7ACC30028FE19 /* TestUI.swift in Sources */,
 				41CB89EC2AB7192B00188083 /* WeatherAppApp.swift in Sources */,
 				4127DE2C2ABB41D3002679C9 /* DayModel.swift in Sources */,
 				41CB89FA2AB723C800188083 /* WeatherButton.swift in Sources */,
@@ -384,7 +380,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to get weather data";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to get weather data";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to get weather information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -417,7 +413,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to get weather data";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to get weather data";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to get weather information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

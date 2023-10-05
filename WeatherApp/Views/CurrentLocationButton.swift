@@ -17,6 +17,7 @@ struct CurrentLocationButton: View {
     var body: some View {
         LocationButton {
             let locationData = LocationData(locationManager: locationManager)
+            
             Task {
                 do {
                     self.weatherModel = try await WeatherManager().getWeather(latitude: locationData.latitude, longitude: locationData.longitude)
@@ -46,8 +47,6 @@ struct CurrentLocationButton: View {
                     locationManager.resetError()
                 }
             )
-            
-            
         }
     }
 }

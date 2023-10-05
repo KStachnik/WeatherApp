@@ -12,9 +12,8 @@ struct ContentView: View {
     
     @State var weatherModel: WeatherModel
     @State private var searchText = ""
-    @StateObject var locationManager: LocationManager = LocationManager()
+    @StateObject var locationManager = LocationManager()
     let weatherManager: WeatherManager = WeatherManager()
-    
     
     var body: some View {
         
@@ -25,15 +24,10 @@ struct ContentView: View {
                 
                 HStack {
                     SearchTextFieldView(searchText: $searchText, weatherModel: $weatherModel)
-                    
-                    
                     CurrentLocationButton(locationManager: locationManager, weatherModel: $weatherModel, weatherManager: weatherManager)
                 }
                 
-                
                 CityTextView(cityName: weatherModel.cityName)
-                
-                
                 MainWeatherStatusView(dayModel: weatherModel.currentDay, isDay: $weatherModel.isDay)
                 
                 HStack(spacing: 20) {
@@ -60,24 +54,13 @@ struct ContentView: View {
                 Spacer()
             }
             
-        }.task {
-            do {
-                let locationData = LocationData(locationManager: LocationManager())
-                weatherModel = try await weatherManager.getWeather(latitude: locationData.latitude, longitude: locationData.longitude)
-            } catch GHError.invalidURL{
-                //work on it
-                print("invalid url")
-            } catch GHError.invalidResponse{
-                print("invalid response")
-            } catch GHError.invalidData{
-                print("invalid data")
-            } catch {
-                print("unexpected error")
-            }
+        } .onAppear() {
+            locationManager.requestLocation()
         }
-    }
         
+    }
 }
+
 
 
 //MARK: - ContentView preview
