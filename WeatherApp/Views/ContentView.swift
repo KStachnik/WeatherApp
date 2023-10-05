@@ -19,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            BackgroundView(isNight: $weatherModel.isDay)
+            BackgroundView(isDay: $weatherModel.isDay)
             
             VStack {
                 
@@ -38,7 +38,6 @@ struct ContentView: View {
                 
                 HStack(spacing: 20) {
                     let days = weatherModel.next5
-                    
                     ForEach(days, id: \.id) { day in
                         WeatherDayView(dayModel: day, isDay: $weatherModel.isDay)
                     }
@@ -66,7 +65,7 @@ struct ContentView: View {
                 let locationData = LocationData(locationManager: LocationManager())
                 weatherModel = try await weatherManager.getWeather(latitude: locationData.latitude, longitude: locationData.longitude)
             } catch GHError.invalidURL{
-                //dla kazdego zrobic alert i wydzielic do osobnego pliku
+                //work on it
                 print("invalid url")
             } catch GHError.invalidResponse{
                 print("invalid response")
