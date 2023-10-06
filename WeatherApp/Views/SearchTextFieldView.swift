@@ -11,10 +11,10 @@ struct SearchTextFieldView: View {
     
     @Binding var searchText: String
     @Binding var weatherModel: WeatherModel
-    let viewModel = SearchTextFieldViewModel()
+    let viewModel = WeatherViewModel()
     
     var body: some View {
-        TextField("City name:", text: $searchText)
+        TextField(K.searchTextFieldEntryText, text: $searchText)
             .padding(8)
             .padding(.horizontal, 5)
             .background(Color(.systemGray6))

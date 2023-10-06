@@ -13,24 +13,13 @@ struct CurrentLocationButton: View {
     @ObservedObject var locationManager: LocationManager
     @Binding var weatherModel: WeatherModel
     let weatherManager: WeatherManager
-    
+    let viewModel = WeatherViewModel()
+
     var body: some View {
         LocationButton {
             let locationData = LocationData(locationManager: locationManager)
             
-            Task {
-                do {
-                    self.weatherModel = try await WeatherManager().getWeather(latitude: locationData.latitude, longitude: locationData.longitude)
-                } catch GHError.invalidURL{
-                    print("invalid url")
-                } catch GHError.invalidResponse{
-                    print("invalid response")
-                } catch GHError.invalidData{
-                    print("invalid data")
-                } catch {
-                    print("unexpected error")
-                }
-            }
+            viewModel.weatherTask(for: locationData, $weatherModel)
         }
         .foregroundColor(weatherModel.isDay ? .orange : .black)
         .cornerRadius(10)
@@ -41,9 +30,9 @@ struct CurrentLocationButton: View {
         .padding(.trailing)
         .alert(isPresented: $locationManager.isError) {
             Alert(
-                title: Text("Error"),
-                message: Text(locationManager.errorCode),
-                dismissButton: .default(Text("OK")) {
+                title: Text(K.locationErrorTitleText),
+                message: Text(locationManager.errorCode.description),
+                dismissButton: .default(Text(K.locationErrorDismissText)) {
                     locationManager.resetError()
                 }
             )

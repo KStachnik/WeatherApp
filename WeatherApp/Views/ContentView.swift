@@ -24,6 +24,7 @@ struct ContentView: View {
                 
                 HStack {
                     SearchTextFieldView(searchText: $searchText, weatherModel: $weatherModel)
+                    
                     CurrentLocationButton(locationManager: locationManager, weatherModel: $weatherModel, weatherManager: weatherManager)
                 }
                 
@@ -44,7 +45,7 @@ struct ContentView: View {
                     
                 } label: {
                     WeatherButton(isDay: $weatherModel.isDay,
-                                  title: "Change Day Time",
+                                  title: K.weatherButtonText,
                                   textColor: .white,
                                   dayBackgroundColor: .orange,
                                   nightBackgroundColor: .black
@@ -54,10 +55,7 @@ struct ContentView: View {
                 Spacer()
             }
             
-        } .onAppear() {
-            locationManager.requestLocation()
         }
-        
     }
 }
 

@@ -41,7 +41,12 @@ struct DayModel {
                     return "cloud.sun.rain.fill"
                 case 1066:
                     return "cloud.snow.circle.fill"
-                    
+                case 1069:
+                    return "cloud.sleet.fill"
+                case 1072:
+                    return "cloud.drizzle"
+                case 1087:
+                    return "cloud.sun.bolt.fill"
                 default:
                     return "cloud.sun.fill"
                 
@@ -63,6 +68,15 @@ struct DayModel {
                 return "cloud.moon.rain.fill"
             case 1066:
                 return "cloud.snow.circle.fill"
+            case 1069:
+                return "cloud.sleet.fill"
+            case 1072:
+                return "cloud.drizzle"
+            case 1087:
+                return "cloud.moon.bolt.fill"
+                
+                //add the rest of it
+                
             default:
                 return "cloud.moon.fill"
                 
