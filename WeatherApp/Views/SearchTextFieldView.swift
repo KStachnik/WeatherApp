@@ -32,7 +32,8 @@ struct SearchTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         
         @State var searchText: String = ""
-        @State var weatherModel: WeatherModel = WeatherModel(weatherData: SampleWeatherData.weatherDataStruct)
+        @State var weatherModel: WeatherModel = WeatherModel(
+                   weatherData: SampleWeatherData.weatherDataStruct)
         
         SearchTextFieldView(searchText: $searchText, weatherModel: $weatherModel)
         
