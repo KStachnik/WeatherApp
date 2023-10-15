@@ -18,7 +18,6 @@ struct CurrentLocationButton: View {
     var body: some View {
         LocationButton {
             let locationData = LocationData(locationManager: locationManager)
-            
             viewModel.weatherTask(for: locationData, $weatherModel)
         }
         .foregroundColor(weatherModel.isDay ? .orange : .black)
