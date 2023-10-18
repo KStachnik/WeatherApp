@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct WeatherViewModel {
-    
     func prepareCityName(for cityName: String) -> String {
         return cityName.replacingOccurrences(of: " ", with: "_")
     }
