@@ -23,15 +23,6 @@ struct CurrentLocationButton: View {
         .buttonStyle(.bordered)
         .padding(.top)
         .padding(.trailing)
-//        .alert(isPresented: $viewModel.locationManager.isError) {
-//            Alert(
-//                title: Text(K.locationErrorTitleText),
-//                message: Text(viewModel.locationManager.errorCode.description),
-//                dismissButton: .default(Text(K.locationErrorDismissText)) {
-//                    viewModel.locationManager.resetError()
-//                }
-//            )
-//        }
     }
 }
 
