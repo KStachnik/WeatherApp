@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BackgroundView: View {
-    
     @Binding var isDay: Bool
     
     var body: some View {
@@ -17,12 +16,10 @@ struct BackgroundView: View {
                        endPoint: .bottomTrailing)
             .ignoresSafeArea()
     }
-    
 }
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var isDay = true
-        BackgroundView(isDay: $isDay)
+        BackgroundView(isDay: .constant(true))
     }
 }

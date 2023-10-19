@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WeatherDayView: View {
-
     let dayModel: DayModel
     @Binding var isDay: Bool
     

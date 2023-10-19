@@ -7,24 +7,19 @@
 
 import SwiftUI
 
-
 struct CityTextView: View {
-    
-    let cityName: String
+    @EnvironmentObject var viewModel: WeatherViewModel
     
     var body: some View {
-        Text(cityName)
+        Text(viewModel.weatherModel.cityName)
             .font(.system(size: 32, weight: .medium, design: .default))
             .foregroundColor(.white)
             .padding()
     }
-    
 }
 
 struct CityTextView_Previews: PreviewProvider {
     static var previews: some View {
-       let cityName: String = ""
-        
-        CityTextView(cityName: cityName)
+        CityTextView()
     }
 }

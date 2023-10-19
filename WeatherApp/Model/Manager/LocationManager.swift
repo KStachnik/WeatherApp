@@ -1,8 +1,6 @@
 import CoreLocation
-import CoreLocationUI
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    
     let manager = CLLocationManager()
     
     @Published var location: CLLocationCoordinate2D?
@@ -22,17 +20,23 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         guard let firstLocation = locations.first?.coordinate else {
             return
         }
-        location = firstLocation
+        DispatchQueue.main.async {
+            self.location = firstLocation
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        errorCode = error.localizedDescription.description
-        isError = true
+        DispatchQueue.main.async {
+            self.errorCode = error.localizedDescription.description
+            self.isError = true
+        }
     }
     
     func resetError() {
-        isError = false
-        errorCode = ""
+        DispatchQueue.main.async {
+            self.isError = false
+            self.errorCode = ""
+        }
     }
     
 }

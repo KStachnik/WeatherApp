@@ -8,12 +8,10 @@
 import Foundation
 
 struct WeatherModel {
-    
     let cityName: String
     let currentDay: DayModel
     let next5: [DayModel]
     var isDay: Bool
-    
     
     init(weatherData: WeatherData) {
         self.cityName = weatherData.location.name
@@ -31,7 +29,6 @@ struct WeatherModel {
         
         self.next5 = temp
     }
-    
 }
 
 

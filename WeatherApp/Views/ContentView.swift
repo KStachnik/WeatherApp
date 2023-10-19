@@ -9,53 +9,47 @@ import SwiftUI
 import _CoreLocationUI_SwiftUI
 
 struct ContentView: View {
-    
-    @State var weatherModel: WeatherModel
-    @State private var searchText = ""
-    @StateObject var locationManager = LocationManager()
-    let weatherManager: WeatherManager = WeatherManager()
+    @StateObject var viewModel: WeatherViewModel = WeatherViewModel()
     
     var body: some View {
         
         ZStack {
-            BackgroundView(isDay: $weatherModel.isDay)
+            BackgroundView(isDay: $viewModel.weatherModel.isDay)
             
             VStack {
                 
                 HStack {
-                    SearchTextFieldView(searchText: $searchText, weatherModel: $weatherModel)
-                    
-                    CurrentLocationButton(locationManager: locationManager, weatherModel: $weatherModel, weatherManager: weatherManager)
+                    SearchTextFieldView()
+                    CurrentLocationButton()
                 }
                 
-                CityTextView(cityName: weatherModel.cityName)
-                MainWeatherStatusView(dayModel: weatherModel.currentDay, isDay: $weatherModel.isDay)
+                CityTextView()
+                MainWeatherStatusView(dayModel: viewModel.weatherModel.currentDay, isDay: $viewModel.weatherModel.isDay)
                 
                 HStack(spacing: 20) {
-                    let days = weatherModel.next5
-                    ForEach(days, id: \.id) { day in
-                        WeatherDayView(dayModel: day, isDay: $weatherModel.isDay)
+                    ForEach(viewModel.weatherModel.next5, id: \.id) { day in
+                        WeatherDayView(dayModel: day, isDay: $viewModel.weatherModel.isDay)
                     }
                 }
                 
                 Spacer()
                 
                 Button {
-                    weatherModel.isDay.toggle()
+                    viewModel.weatherModel.isDay.toggle()
                     
                 } label: {
-                    WeatherButton(isDay: $weatherModel.isDay,
+                    WeatherButton(isDay: $viewModel.weatherModel.isDay,
                                   title: K.weatherButtonText,
                                   textColor: .white,
                                   dayBackgroundColor: .orange,
                                   nightBackgroundColor: .black
                     )
-                    
                 }
                 Spacer()
             }
             
         }
+        .environmentObject(viewModel)
     }
 }
 
@@ -64,7 +58,7 @@ struct ContentView: View {
 //MARK: - ContentView preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(weatherModel: WeatherModel(weatherData: SampleWeatherData.weatherDataStruct))
+        ContentView()
     }
 }
 

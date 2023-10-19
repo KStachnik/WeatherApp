@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WeatherButton: View {
-    
     @Binding var isDay: Bool
     
     var title: String

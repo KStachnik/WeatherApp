@@ -8,17 +8,31 @@
 import Foundation
 import SwiftUI
 
-struct WeatherViewModel {
+@MainActor final class WeatherViewModel: ObservableObject {
+    
+    @Published var weatherModel: WeatherModel
+    @Published var searchText: String
+    @Published var locationManager: LocationManager
+    let weatherManager: WeatherManager
+    
+    init() {
+        self.weatherModel = WeatherModel(weatherData: SampleWeatherData.weatherDataStruct)
+        self.searchText = ""
+        self.locationManager = LocationManager()
+        self.weatherManager = WeatherManager()
+    }
     
     func prepareCityName(for cityName: String) -> String {
         return cityName.replacingOccurrences(of: " ", with: "_")
     }
     
-    func weatherTask(for cityName: String, _ weatherModel: Binding<WeatherModel>) {
+    func weatherTaskForCityName() {
         Task {
             do {
-                let weather = try await WeatherManager().getWeather(with: prepareCityName(for: cityName))
-                weatherModel.wrappedValue = weather
+                let weather = try await weatherManager.getWeather(with: prepareCityName(for: searchText))
+                DispatchQueue.main.async {
+                    self.weatherModel = weather
+                }
             } catch GHError.invalidURL{
                 print("invalid url")
             } catch GHError.invalidResponse{
@@ -31,11 +45,14 @@ struct WeatherViewModel {
         }
     }
     
-    func weatherTask(for locationData: LocationData, _ weatherModel: Binding<WeatherModel>) {
+    func weatherTaskForLocation() {
         Task {
             do {
-                let weather = try await WeatherManager().getWeather(latitude: locationData.latitude, longitude: locationData.longitude)
-                weatherModel.wrappedValue = weather
+                let locationData = LocationData(locationManager: locationManager)
+                let weather = try await weatherManager.getWeather(latitude: locationData.latitude, longitude: locationData.longitude)
+                DispatchQueue.main.async {
+                    self.weatherModel = weather
+                }
             } catch GHError.invalidURL{
                 print("invalid url")
             } catch GHError.invalidResponse{
@@ -47,4 +64,5 @@ struct WeatherViewModel {
             }
         }
     }
+    
 }

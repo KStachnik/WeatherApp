@@ -8,13 +8,12 @@
 import Foundation
 
 struct DayModel {
-    
-    private(set) var id = UUID()
-    private(set) var name: String = ""
-    private(set) var dayTemp: String = "0.0"
-    private(set) var nightTemp: String = "0.0"
-    private(set) var dayWeatherConditionIcon: String = ""
-    private(set) var nightWeatherConditionIcon: String = ""
+    var id = UUID()
+    var name: String = ""
+    var dayTemp: String = "0.0"
+    var nightTemp: String = "0.0"
+    var dayWeatherConditionIcon: String = ""
+    var nightWeatherConditionIcon: String = ""
     
     init(dayData: ForecastDay) {
         
@@ -100,7 +99,6 @@ struct DayModel {
         
         return ""
     }
-    
     
     func calculateWeatherConditions(day: ForecastDay, for isDay: Bool) -> (Int, Double) {
         let hours = day.hour

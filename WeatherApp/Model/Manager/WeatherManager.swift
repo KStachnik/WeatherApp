@@ -8,7 +8,6 @@
 import Foundation
 
 struct WeatherManager {
-    
     private let tempEndpoint = "https://api.weatherapi.com/v1/forecast.json?key=\(K.apiKey)&days=6&aqi=no&alerts=no&lan=en"
     
     func getWeather(with parameter: String) async throws -> WeatherModel {
@@ -40,7 +39,6 @@ struct WeatherManager {
         let parameter = "\(latitude),\(longitude)"
         return try await getWeather(with: parameter)
     }
-    
 }
 
 enum GHError: Error {
