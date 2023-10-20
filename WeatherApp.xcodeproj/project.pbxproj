@@ -151,10 +151,10 @@
 				41CB89ED2AB7192B00188083 /* ContentView.swift */,
 				41EAF9C62ABDF6F60069F1C5 /* SearchTextFieldView.swift */,
 				41CE70062ABD9C0D001A224B /* CurrentLocationButton.swift */,
+				41EAF9C82ABDF7CB0069F1C5 /* CityTextView.swift */,
 				41CB89F92AB723C800188083 /* WeatherButton.swift */,
 				419585882ABDE93800C1662A /* WeatherDayView.swift */,
 				410A59B82ABDEC17005E66E6 /* BackgroundView.swift */,
-				41EAF9C82ABDF7CB0069F1C5 /* CityTextView.swift */,
 				41EAF9CA2ABDF8470069F1C5 /* MainWeatherStatusView.swift */,
 			);
 			path = Views;

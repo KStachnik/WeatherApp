@@ -16,6 +16,7 @@ struct CurrentLocationButton: View {
             viewModel.locationManager.requestLocation()
             viewModel.weatherTaskForLocation()
         }
+        .background(Color(.white))
         .foregroundColor(viewModel.weatherModel.isDay ? .orange : .black)
         .cornerRadius(10)
         .labelStyle(.iconOnly)

@@ -14,7 +14,7 @@ struct SearchTextFieldView: View {
         TextField(K.searchTextFieldEntryText, text: $viewModel.searchText)
             .padding(8)
             .padding(.horizontal, 5)
-            .background(Color(.systemGray6))
+            .background(Color(.white))
             .cornerRadius(10)
             .padding(.leading, 30)
             .onSubmit {

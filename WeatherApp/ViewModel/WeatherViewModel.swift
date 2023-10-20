@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 
 @MainActor final class WeatherViewModel: ObservableObject {
-    
     @Published var weatherModel: WeatherModel
     @Published var searchText: String
     @Published var locationManager: LocationManager
     let weatherManager: WeatherManager
+    
+    //add calculated color etc, ContentView to Screen folder, add alerts
     
     init() {
         self.weatherModel = WeatherModel(weatherData: SampleWeatherData.weatherDataStruct)
@@ -32,6 +33,7 @@ import SwiftUI
                 let weather = try await weatherManager.getWeather(with: prepareCityName(for: searchText))
                 DispatchQueue.main.async {
                     self.weatherModel = weather
+                    self.searchText = ""
                 }
             } catch GHError.invalidURL{
                 print("invalid url")
