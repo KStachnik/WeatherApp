@@ -2,11 +2,8 @@ import CoreLocation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
-    
     @Published var location: CLLocationCoordinate2D?
-    @Published var isError: Bool = false
-    var errorCode: String = ""
-    
+  
     override init() {
         super.init()
         manager.delegate = self
@@ -14,6 +11,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func requestLocation() {
         manager.requestLocation()
+        manager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -21,6 +19,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             return
         }
         self.location = firstLocation
+        self.manager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

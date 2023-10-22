@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeatherButton: View {
     @Binding var isDay: Bool
+    @EnvironmentObject var viewModel: WeatherViewModel
     
     var title: String
     var textColor: Color
@@ -16,12 +17,17 @@ struct WeatherButton: View {
     var nightBackgroundColor: Color
     
     var body: some View {
-        Text(title)
-            .frame(width: 280, height: 50)
-            .background(isDay ? dayBackgroundColor : nightBackgroundColor)
-            .foregroundColor(textColor)
-            .font(.system(size: 20, weight: .bold))
-            .cornerRadius(10)
+        Button {
+            viewModel.weatherModel.isDay.toggle()
+            
+        } label: {
+            Text(title)
+                .frame(width: 280, height: 50)
+                .background(isDay ? dayBackgroundColor : nightBackgroundColor)
+                .foregroundColor(textColor)
+                .font(.system(size: 20, weight: .bold))
+                .cornerRadius(10)
+        }
     }
 }
 

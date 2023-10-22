@@ -8,13 +8,11 @@
 import Foundation
 import SwiftUI
 
-@MainActor final class WeatherViewModel: ObservableObject {
+final class WeatherViewModel: ObservableObject {
     @Published var weatherModel: WeatherModel
     @Published var searchText: String
     @Published var locationManager: LocationManager
     let weatherManager: WeatherManager
-    
-    //add calculated color etc, ContentView to Screen folder, add alerts
     
     init() {
         self.weatherModel = WeatherModel(weatherData: SampleWeatherData.weatherDataStruct)
@@ -48,23 +46,31 @@ import SwiftUI
     }
     
     func weatherTaskForLocation() {
+        locationManager.requestLocation()
         Task {
-            do {
-                let locationData = LocationData(locationManager: locationManager)
-                let weather = try await weatherManager.getWeather(latitude: locationData.latitude, longitude: locationData.longitude)
-                DispatchQueue.main.async {
-                    self.weatherModel = weather
-                }
-            } catch GHError.invalidURL{
-                print("invalid url")
-            } catch GHError.invalidResponse{
-                print("invalid response")
-            } catch GHError.invalidData{
-                print("invalid data")
-            } catch {
-                print("unexpected error")
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            
+            if let latitude =
+                    locationManager.manager.location?.coordinate.latitude,
+               let longitude =
+                    locationManager.manager.location?.coordinate.longitude {
+                    do {
+                        let weather = try await weatherManager.getWeather(latitude: latitude ,longitude: longitude)
+                        DispatchQueue.main.async {
+                            self.weatherModel = weather
+                        }
+                    } catch GHError.invalidURL{
+                        print("invalid url")
+                    } catch GHError.invalidResponse{
+                        print("invalid response")
+                    } catch GHError.invalidData{
+                        print("invalid data")
+                    } catch {
+                        print("unexpected error")
+                    }
             }
         }
+        
     }
     
 }

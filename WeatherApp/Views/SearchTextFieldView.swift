@@ -12,9 +12,11 @@ struct SearchTextFieldView: View {
     
     var body: some View {
         TextField(K.searchTextFieldEntryText, text: $viewModel.searchText)
+            .disableAutocorrection(true)
             .padding(8)
             .padding(.horizontal, 5)
             .background(Color(.white))
+            .foregroundColor(Color(.black))
             .cornerRadius(10)
             .padding(.leading, 30)
             .onSubmit {

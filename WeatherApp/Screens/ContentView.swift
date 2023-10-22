@@ -6,51 +6,48 @@
 //
 
 import SwiftUI
-import _CoreLocationUI_SwiftUI
+import CoreLocation
+import CoreLocationUI
 
 struct ContentView: View {
     @StateObject var viewModel: WeatherViewModel = WeatherViewModel()
     
     var body: some View {
-        
         ZStack {
             BackgroundView(isDay: $viewModel.weatherModel.isDay)
             
             VStack {
-                
                 HStack {
                     SearchTextFieldView()
                     CurrentLocationButton()
                 }
                 
                 CityTextView()
-                MainWeatherStatusView(dayModel: viewModel.weatherModel.currentDay, isDay: $viewModel.weatherModel.isDay)
+                MainWeatherStatusView(dayModel: viewModel.weatherModel.currentDay,
+                                      isDay: $viewModel.weatherModel.isDay)
                 
                 HStack(spacing: 20) {
                     ForEach(viewModel.weatherModel.next5, id: \.id) { day in
-                        WeatherDayView(dayModel: day, isDay: $viewModel.weatherModel.isDay)
+                        WeatherDayView(dayModel: day,
+                                       isDay: $viewModel.weatherModel.isDay)
                     }
                 }
                 
                 Spacer()
                 
-                Button {
-                    viewModel.weatherModel.isDay.toggle()
-                    
-                } label: {
-                    WeatherButton(isDay: $viewModel.weatherModel.isDay,
-                                  title: K.weatherButtonText,
-                                  textColor: .white,
-                                  dayBackgroundColor: .orange,
-                                  nightBackgroundColor: .black
-                    )
-                }
+                WeatherButton(isDay: $viewModel.weatherModel.isDay,
+                              title: K.weatherButtonText,
+                              textColor: .white,
+                              dayBackgroundColor: .orange,
+                              nightBackgroundColor: .black
+                )
+                
                 Spacer()
             }
-            
         }
         .environmentObject(viewModel)
     }
+       
 }
 
 

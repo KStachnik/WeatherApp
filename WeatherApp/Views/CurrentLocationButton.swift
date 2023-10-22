@@ -13,14 +13,13 @@ struct CurrentLocationButton: View {
 
     var body: some View {
         LocationButton {
-            viewModel.locationManager.requestLocation()
             viewModel.weatherTaskForLocation()
         }
         .background(Color(.white))
         .foregroundColor(viewModel.weatherModel.isDay ? .orange : .black)
         .cornerRadius(10)
         .labelStyle(.iconOnly)
-        .tint(Color(.systemGray6))
+        .tint(Color(.white))
         .buttonStyle(.bordered)
         .padding(.top)
         .padding(.trailing)
