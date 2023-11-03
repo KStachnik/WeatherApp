@@ -70,5 +70,4 @@ import SwiftUI
         }
         
     }
-    
 }

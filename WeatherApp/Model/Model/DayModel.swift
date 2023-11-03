@@ -73,9 +73,7 @@ struct DayModel {
                 return "cloud.drizzle"
             case 1087:
                 return "cloud.moon.bolt.fill"
-                
-                //add the rest of it
-                
+
             default:
                 return "cloud.moon.fill"
                 

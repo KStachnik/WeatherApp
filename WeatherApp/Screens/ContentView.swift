@@ -4,7 +4,6 @@
 //
 //  Created by Krystian Stachnik on 17/09/2023.
 //
-
 import SwiftUI
 import CoreLocation
 import CoreLocationUI
@@ -51,7 +50,7 @@ struct ContentView: View {
         }
     }
        
-}
+    }    
 
 
 
