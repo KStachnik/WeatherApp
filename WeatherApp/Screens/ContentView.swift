@@ -46,6 +46,9 @@ struct ContentView: View {
             }
         }
         .environmentObject(viewModel)
+        .onAppear {
+            viewModel.locationManager.requestLocation()
+        }
     }
        
 }

@@ -7,8 +7,11 @@
 
 import Foundation
 
-struct WeatherManager {
+final class WeatherManager {
+    static let shared = WeatherManager()
     private let tempEndpoint = "https://api.weatherapi.com/v1/forecast.json?key=\(K.apiKey)&days=6&aqi=no&alerts=no&lan=en"
+    
+    private init() {}
     
     func getWeather(with parameter: String) async throws -> WeatherModel {
         

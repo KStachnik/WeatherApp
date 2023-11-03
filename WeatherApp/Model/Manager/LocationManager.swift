@@ -1,8 +1,8 @@
 import CoreLocation
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
-    @Published var location: CLLocationCoordinate2D?
+    var location: CLLocationCoordinate2D?
   
     override init() {
         super.init()

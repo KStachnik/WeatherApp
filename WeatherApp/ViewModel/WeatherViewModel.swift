@@ -8,17 +8,15 @@
 import Foundation
 import SwiftUI
 
-final class WeatherViewModel: ObservableObject {
+@MainActor final class WeatherViewModel: ObservableObject {
     @Published var weatherModel: WeatherModel
     @Published var searchText: String
     @Published var locationManager: LocationManager
-    let weatherManager: WeatherManager
     
     init() {
         self.weatherModel = WeatherModel(weatherData: SampleWeatherData.weatherDataStruct)
         self.searchText = ""
         self.locationManager = LocationManager()
-        self.weatherManager = WeatherManager()
     }
     
     func prepareCityName(for cityName: String) -> String {
@@ -28,11 +26,11 @@ final class WeatherViewModel: ObservableObject {
     func weatherTaskForCityName() {
         Task {
             do {
-                let weather = try await weatherManager.getWeather(with: prepareCityName(for: searchText))
-                DispatchQueue.main.async {
-                    self.weatherModel = weather
-                    self.searchText = ""
-                }
+                let weather = try await WeatherManager.shared.getWeather(with: prepareCityName(for: searchText))
+                
+                self.weatherModel = weather
+                self.searchText = ""
+                
             } catch GHError.invalidURL{
                 print("invalid url")
             } catch GHError.invalidResponse{
@@ -55,10 +53,10 @@ final class WeatherViewModel: ObservableObject {
                let longitude =
                     locationManager.manager.location?.coordinate.longitude {
                     do {
-                        let weather = try await weatherManager.getWeather(latitude: latitude ,longitude: longitude)
-                        DispatchQueue.main.async {
-                            self.weatherModel = weather
-                        }
+                        let weather = try await WeatherManager.shared.getWeather(latitude: latitude ,longitude: longitude)
+                        
+                        self.weatherModel = weather
+                        
                     } catch GHError.invalidURL{
                         print("invalid url")
                     } catch GHError.invalidResponse{
