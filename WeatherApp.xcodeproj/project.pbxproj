@@ -60,14 +60,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4105BE992AC1EDA800F7DBF3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4105BE9A2AC1EDD500F7DBF3 /* WeatherViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		411160C42ABE1324004D31BE /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,15 +67,6 @@
 				4130515B2AB8981A0092DF19 /* LocationManager.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		411160C52ABE1368004D31BE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				41AC23E72ABA4C9600EDA11D /* WeatherModel.swift */,
-				4127DE2B2ABB41D3002679C9 /* DayModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		411160C62ABE137D004D31BE /* Data */ = {
@@ -94,9 +77,19 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		411929872AF70EEA009860EC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				41CE70092ABDA357001A224B /* Views */,
+				411160C42ABE1324004D31BE /* Manager */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		41288D3D2AE4574B00F6D904 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4105BE9A2AC1EDD500F7DBF3 /* WeatherViewModel.swift */,
 				41CB89ED2AB7192B00188083 /* ContentView.swift */,
 			);
 			path = Screens;
@@ -121,10 +114,9 @@
 		41CB89EA2AB7192B00188083 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				411929872AF70EEA009860EC /* Utilities */,
 				41CE70082ABDA2F0001A224B /* Model */,
-				41CE70092ABDA357001A224B /* Views */,
 				41288D3D2AE4574B00F6D904 /* Screens */,
-				4105BE992AC1EDA800F7DBF3 /* ViewModel */,
 				41CB89F12AB7192D00188083 /* Preview Content */,
 				4135E14F2AC4FCDD00E2A2A1 /* K.swift */,
 				41CB89EB2AB7192B00188083 /* WeatherAppApp.swift */,
@@ -144,8 +136,8 @@
 		41CE70082ABDA2F0001A224B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				411160C42ABE1324004D31BE /* Manager */,
-				411160C52ABE1368004D31BE /* Model */,
+				41AC23E72ABA4C9600EDA11D /* WeatherModel.swift */,
+				4127DE2B2ABB41D3002679C9 /* DayModel.swift */,
 				411160C62ABE137D004D31BE /* Data */,
 			);
 			path = Model;

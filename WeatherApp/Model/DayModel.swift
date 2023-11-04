@@ -90,8 +90,8 @@ struct DayModel {
         let data: Date? = dateFormatter.date(from: date)
         dateFormatter.dateFormat = "EEEEEE"
         
-        if let safeData = data {
-            let dayOfTheWeekString = dateFormatter.string(from: safeData)
+        if let data {
+            let dayOfTheWeekString = dateFormatter.string(from: data)
             return dayOfTheWeekString
         }
         
@@ -118,8 +118,8 @@ struct DayModel {
         let tempSum = tempArray.reduce(0, +)
         let avgTemp = tempSum/Double(countedTempArray)
         
-        if let condition = mostFrequentCondition {
-            return (condition, avgTemp)
+        if let mostFrequentCondition {
+            return (mostFrequentCondition, avgTemp)
         }
         
         return (0, 0.0)
