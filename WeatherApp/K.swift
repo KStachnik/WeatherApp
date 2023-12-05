@@ -15,5 +15,5 @@ struct K {
     static let locationErrorTitleText = "Error"
     static let locationErrorDismissText = "OK"
     
-    static let searchTextFieldEntryText = "City name:"
+    static let searchTextFieldEntryText = "City name: "
 }
